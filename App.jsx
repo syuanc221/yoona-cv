@@ -1,8 +1,8 @@
 import React from 'react';
 import { 
-  Briefcase, GraduationCap, Mail, Link, Zap, LayoutGrid, Palette, Users, Globe, 
+  Briefcase, GraduationCap, Mail, Zap, LayoutGrid, Palette, Users, Globe, 
   ArrowUpRight, Layers, Box, PenTool, Download, Languages, MapPin, 
-  Building, FileText, Image, MessageSquare, Sparkles, Video, LayoutTemplate, Send, Instagram
+  Building, FileText, Image, MessageSquare, Sparkles, Video, LayoutTemplate, Send
 } from 'lucide-react';
 
 // 數據結構 (Data Structure)
@@ -13,8 +13,7 @@ const cvData = {
   location: "Taipei, Taiwan (Remote)",
   // 頭像連結
   avatar: "https://i.meee.com.tw/qlUOGSu.png", 
-  intro: "嗨，我是 Yoona！擁有 8 年以上經驗的產品設計師，熱衷於創造令人驚艷的介面體驗。",
-  // 增加 Telegram 連結到 links 陣列中，用於 CTA 區塊
+  // 連結列表 (Links)
   links: [
     { type: 'studio', url: 'https://off-office.co/', label: '工作室網站', icon: Building, color: 'bg-emerald-500', text: 'text-emerald-50' },
     { type: 'portfolio', url: 'https://y00na.com', label: '個人作品集', icon: Globe, color: 'bg-orange-500', text: 'text-orange-50' },
@@ -22,7 +21,7 @@ const cvData = {
     { type: 'email', url: 'mailto:syuan.chen.221@gmail.com', label: 'Email', icon: Mail, color: 'bg-purple-600', text: 'text-purple-50' },
     { type: 'telegram', url: 'https://t.me/yoona_eth', label: 'Telegram', icon: Send, color: 'bg-sky-500', text: 'text-sky-50' }, 
   ],
-  // 技能圖示 (icon)
+  // 技能圖示 (Stack)
   stack: [
     { name: "Figma", category: "Design", color: "text-purple-600", bg: "bg-purple-50", icon: Palette },
     { name: "Framer", category: "No-Code", color: "text-blue-600", bg: "bg-blue-50", icon: LayoutTemplate },
@@ -98,8 +97,7 @@ const LightCard = ({ children, className = "" }) => (
 );
 
 // 小元件: 社交連結按鈕 (Social Button) - 採用玻璃效果 (Glassy Button)
-const SocialButton = ({ link }) => {
-  return (
+const SocialButton = ({ link }) => (
     <a 
       href={link.url} 
       target="_blank" 
@@ -120,12 +118,11 @@ const SocialButton = ({ link }) => {
       </div>
       <ArrowUpRight size={14} className="text-slate-400 group-hover:text-slate-600 transition-colors shrink-0" />
     </a>
-  );
-};
+);
 
 // 新增 CTA 聯繫區塊
 const ContactCTA = ({ links }) => {
-    // 篩選出 CTA 區塊需要的聯繫方式 (Email, LinkedIn, Telegram, Studio)
+    // 篩選出 CTA 區塊需要的聯繫方式
     const contactLinks = links.filter(link => 
         ['email', 'linkedin', 'telegram', 'studio'].includes(link.type)
     );
